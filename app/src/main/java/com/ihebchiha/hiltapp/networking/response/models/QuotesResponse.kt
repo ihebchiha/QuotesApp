@@ -1,7 +1,9 @@
 package com.ihebchiha.hiltapp.networking.response.models
 
 import android.os.Parcelable
+import com.ihebchiha.hiltapp.networking.mapper.DomainMapper
 import com.ihebchiha.hiltapp.networking.response.models.*
+import com.ihebchiha.hiltapp.networking.result.models.Quote
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -30,4 +32,6 @@ data class QuotesResponse (
 	val categories : List<Int>,
 	val tags : List<String>,
 	val _links : Links
-) : Parcelable
+) : Parcelable, DomainMapper<Quote> {
+	override fun map(): Quote = Quote(id, date, title.rendered, content.rendered)
+}

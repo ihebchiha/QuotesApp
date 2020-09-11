@@ -2,7 +2,6 @@ package com.ihebchiha.hiltapp.repository
 
 import com.ihebchiha.hiltapp.data.database.local.QuotesDao
 import com.ihebchiha.hiltapp.data.database.remote.QuotesRemoteDataSource
-import com.ihebchiha.hiltapp.networking.mapper.QuoteMapper
 import com.ihebchiha.hiltapp.networking.mapper.mapToDomain
 import com.ihebchiha.hiltapp.networking.response.models.QuotesResponse
 import com.ihebchiha.hiltapp.networking.result.models.Quote
@@ -22,7 +21,7 @@ class QuotesRepositoryImpl(
         val res: Resource<List<QuotesResponse>> = quotesRemoteDataSource.getAllQuotes()
         if (res.status == Resource.Status.SUCCESS) {
             val o = res.data?.map { quote ->
-                quote.mapToDomain()
+               quote.map()
             }!!
             return Resource.success(o)
         } else if (res.status == Resource.Status.ERROR) {
