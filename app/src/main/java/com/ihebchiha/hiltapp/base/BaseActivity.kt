@@ -1,12 +1,16 @@
 package com.ihebchiha.hiltapp.base
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.reflect.KClass
 
-abstract class BaseActivity {
+@AndroidEntryPoint
+open class BaseActivity : AppCompatActivity() {
 
     /*private fun viewModels(clazz: KClass<ViewModel>, factoryProducer: (() -> ViewModelProvider.Factory)? = null): Lazy<ViewModel> {
         return ViewModelLazy(clazz, { viewModelStore }, factoryProducer ?: { defaultViewModelProviderFactory })

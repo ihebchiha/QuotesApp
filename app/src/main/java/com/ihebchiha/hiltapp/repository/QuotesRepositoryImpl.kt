@@ -1,5 +1,6 @@
 package com.ihebchiha.hiltapp.repository
 
+import androidx.lifecycle.LiveData
 import com.ihebchiha.hiltapp.data.database.local.QuotesDao
 import com.ihebchiha.hiltapp.data.database.remote.QuotesRemoteDataSource
 import com.ihebchiha.hiltapp.networking.mapper.mapToDomain
@@ -15,7 +16,7 @@ class QuotesRepositoryImpl(
     fun getAllQuotes() = performGetOperation(
         databaseQuery = { localDataSource.getAllQuotes() },
         networkCall = { quotesRemoteDataSource.getAllQuotes() },
-        saveCallResult = { 8 })
+        saveCallResult = { localDataSource.insertAllTasks(getAllQuotesFromApi()?.data!!) })
 
     suspend fun getAllQuotesFromApi(): Resource<List<Quote>>? {
         val res: Resource<List<QuotesResponse>> = quotesRemoteDataSource.getAllQuotes()
@@ -28,5 +29,9 @@ class QuotesRepositoryImpl(
             return Resource.error(message = "error has occurred")
         }
         return null
+    }
+
+    suspend fun getQuoteFromDatabase(id: Int): LiveData<Quote>{
+        return localDataSource.getQuoteByID(id = id)
     }
 }
