@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.view.fragments.QuoteDetailsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.view.fragments.QuoteDetailsFragment">
 
-</FrameLayout>
+        <View
+            android:id="@+id/avatarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@drawable/view_rounded_corners"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/quoteItem"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/authorAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintTop_toTopOf="@id/avatarContainer"
+            app:layout_constraintBottom_toTopOf="@id/authorNameTV"
+            app:layout_constraintEnd_toEndOf="@id/avatarContainer"
+            app:layout_constraintStart_toStartOf="@id/avatarContainer"
+            app:layout_constraintVertical_bias="0.25"
+            app:placeholderImage="@drawable/cav_mata_leao"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@android:color/white"
+            app:roundingBorderWidth="3dp" />
+
+        <TextView
+            android:id="@+id/authorNameTV"
+            style="@style/titlesTextViewStyle"
+            app:layout_constraintEnd_toEndOf="@+id/authorAvatar"
+            app:layout_constraintStart_toStartOf="@+id/authorAvatar"
+            app:layout_constraintTop_toBottomOf="@id/authorAvatar"
+            tools:text="Gahtouna" />
+
+        <TextView
+            android:id="@+id/authorOccTV"
+            style="@style/subTitlesTextViewStyle"
+            app:layout_constraintEnd_toEndOf="@+id/authorNameTV"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="@+id/authorNameTV"
+            app:layout_constraintTop_toBottomOf="@id/authorNameTV"
+            tools:text="Msakarha" />
+
+        <include
+            android:id="@+id/quoteItem"
+            layout="@layout/quote_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintVertical_bias="1.5"
+            app:layout_constraintStart_toStartOf="@id/avatarContainer"
+            app:layout_constraintEnd_toEndOf="@id/avatarContainer"
+            app:layout_constraintTop_toBottomOf="@id/avatarContainer" />
+
+        <TextView
+            android:id="@+id/storyTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/subTitlesTextViewStyle"
+            android:textColor="@android:color/black"
+
+            app:layout_constraintStart_toStartOf="@id/quoteItem"
+            app:layout_constraintEnd_toEndOf="@id/quoteItem"
+            app:layout_constraintTop_toBottomOf="@id/quoteItem"
+            android:text="@string/story_behind_it"
+            tools:text="Story Behind It"/>
+
+        <TextView
+            android:id="@+id/storyTV"
+            style="@style/paragTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@id/storyTitleTV"
+            app:layout_constraintStart_toStartOf="@id/storyTitleTV"
+            app:layout_constraintTop_toBottomOf="@id/storyTitleTV" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

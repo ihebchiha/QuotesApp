@@ -20,7 +20,7 @@
         android:name="com.ihebchiha.hiltapp.ui.view.fragments.QuoteDetailsFragment"
         android:label="Quote Details"
         tools:layout="@layout/fragment_quote_details" >
-        <action app:id="@+id/goback" app:destination="@id/quotesFragment"
+        <action android:id="@+id/goBackToQuotes" app:destination="@id/quotesFragment"
             />
     </fragment>
 </navigation>

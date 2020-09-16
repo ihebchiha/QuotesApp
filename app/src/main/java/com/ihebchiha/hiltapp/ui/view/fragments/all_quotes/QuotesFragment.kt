@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.networking.result.models.Quote
 import com.ihebchiha.hiltapp.ui.presentation.QuotesViewModel
@@ -18,15 +20,17 @@ import com.ihebchiha.hiltapp.ui.view.adapters.QuotesAdapter
 import com.ihebchiha.hiltapp.utils.extensions.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quotes.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class QuotesFragment : Fragment(), QuotesAdapter.QuoteItemListener {
 
     private val quoteViewModel: QuotesViewModel by viewModels()
 
-    lateinit var quotesAdapter: QuotesAdapter
+    @Inject
+    lateinit var gson: Gson
 
-    lateinit var navController: NavController
+    private lateinit var quotesAdapter: QuotesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +49,6 @@ class QuotesFragment : Fragment(), QuotesAdapter.QuoteItemListener {
         setupObservers()
         setupRecyclerView()
         quoteViewModel.getQuotes()
-
-
     }
 
     companion object {
@@ -82,9 +84,12 @@ class QuotesFragment : Fragment(), QuotesAdapter.QuoteItemListener {
         quotes_rv.adapter = quotesAdapter
     }
 
+
     override fun onClickedQuote(quote: Quote) {
         findNavController().navigate(
-            R.id.action_quotesFragment_to_quoteDetailFragment
+            R.id.action_quotesFragment_to_quoteDetailFragment,
+            bundleOf("quote" to gson.toJson(quote))
         )
+
     }
 }

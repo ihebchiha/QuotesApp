@@ -2,6 +2,7 @@ package com.ihebchiha.hiltapp.di.modules
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.ihebchiha.hiltapp.networking.params.BASE_URL
 import com.ihebchiha.hiltapp.networking.service.QuotesApiService
@@ -21,6 +22,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object NetworkModule{
+
+    @Singleton
+    @Provides
+    fun provideGson(): Gson = GsonBuilder().create()
 
     @Singleton
     @Provides

@@ -18,7 +18,7 @@ class QuotesAdapter @Inject constructor(private val listener: QuoteItemListener)
     RecyclerView.Adapter<QuoteViewHolder>() {
 
     interface QuoteItemListener {
-        fun onClickedQuote(quoteId: Int)
+        fun onClickedQuote(quote: Quote)
     }
 
     private val items = ArrayList<Quote>()
@@ -66,6 +66,6 @@ class QuoteViewHolder(
     }
 
     override fun onClick(p0: View?) {
-        listener.onClickedQuote(quote.id)
+        listener.onClickedQuote(quote)
     }
 }

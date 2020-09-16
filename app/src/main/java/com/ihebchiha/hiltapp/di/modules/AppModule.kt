@@ -7,6 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.room.Room
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.base.BaseActivity
 import com.ihebchiha.hiltapp.data.database.local.QuotesDao
@@ -40,7 +42,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): QuotesDatabase {
-        return Room.databaseBuilder(context, QuotesDatabase::class.java, "Quotes").build()
+        return Room.databaseBuilder(context, QuotesDatabase::class.java, "Quotes").allowMainThreadQueries().fallbackToDestructiveMigration().build()
     }
 
     @Singleton
