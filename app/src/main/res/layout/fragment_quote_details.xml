@@ -21,6 +21,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/quoteItem"/>
 
+        <ImageView
+            android:id="@+id/goBackArrowIV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="@id/avatarContainer"
+            app:layout_constraintTop_toTopOf="@id/avatarContainer"
+            android:contentDescription="@string/todo" />
+
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/authorAvatar"
             android:layout_width="150dp"

@@ -9,18 +9,21 @@
         android:id="@+id/quotesFragment"
         android:name="com.ihebchiha.hiltapp.ui.view.fragments.all_quotes.QuotesFragment"
         android:label="Characters"
-        tools:layout="@layout/fragment_quotes" >
+        tools:layout="@layout/fragment_quotes">
         <action
             android:id="@+id/action_quotesFragment_to_quoteDetailFragment"
-            app:destination="@id/quoteDetailsFragment" />
+            app:destination="@id/quoteDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"/>
 
     </fragment>
     <fragment
         android:id="@+id/quoteDetailsFragment"
         android:name="com.ihebchiha.hiltapp.ui.view.fragments.QuoteDetailsFragment"
         android:label="Quote Details"
-        tools:layout="@layout/fragment_quote_details" >
-        <action android:id="@+id/goBackToQuotes" app:destination="@id/quotesFragment"
-            />
+        tools:layout="@layout/fragment_quote_details">
+        <action
+            android:id="@+id/goBackToQuotes"
+            app:destination="@id/quotesFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>

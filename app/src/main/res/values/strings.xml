@@ -4,4 +4,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
     <string name="story_behind_it">Story Behind It</string>
+
+    <string name="navigation_drawer_open">open drawer</string>
+    <string name="navigation_drawer_close">close drawer</string>
+
+    <!-- SideMenu -->
+    <string name="qotd_label">Quote of the Day</string>
+    <string name="all_quotes_label">All Quotes</string>
+    <string name="favorite_label">Favorites</string>
+    <string name="profile_label">Profile</string>
+    <string name="home_label">Home</string>
 </resources>

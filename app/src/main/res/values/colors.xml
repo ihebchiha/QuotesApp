@@ -4,4 +4,13 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="blue_3E78FF">#3E78FF</color>
+    
+    <!-- Green -->
+    <color name="green41f27a">#41f27a</color>
+    
+    <!-- Red -->
+    <color name="redf04c22">#f04c22</color>
+
+    <!-- Black -->
+    <color name="black40000000">#40000000</color>
 </resources>
