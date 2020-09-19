@@ -2,6 +2,7 @@ package com.ihebchiha.hiltapp.di.modules
 
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.ihebchiha.hiltapp.networking.params.BASE_URL
@@ -58,4 +59,9 @@ object NetworkModule{
     fun providesApiService(retrofit: Retrofit): QuotesApiService {
         return retrofit.create(QuotesApiService::class.java)
     }
+
+
+    @Singleton
+    @Provides
+    fun provideFirebaseAuth(): FirebaseAuth =  FirebaseAuth.getInstance()
 }

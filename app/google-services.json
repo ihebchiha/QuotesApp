@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "726102399284",
+    "firebase_url": "https://quotesapp-a45a2.firebaseio.com",
+    "project_id": "quotesapp-a45a2",
+    "storage_bucket": "quotesapp-a45a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726102399284:android:b97239490243f12d8ead61",
+        "android_client_info": {
+          "package_name": "com.ihebchiha.hiltapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726102399284-c21gnme0enf4usbve5h7ieebkvf0fpog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9LD0v233cUFCHUgIMW8ah08d3Uf4TyRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726102399284-c21gnme0enf4usbve5h7ieebkvf0fpog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

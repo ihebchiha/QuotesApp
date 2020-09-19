@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TextViews -->
+    <dimen name="titleSize">32sp</dimen>
+    <dimen name="subTitleSize">24sp</dimen>
+    <dimen name="paragSize">13sp</dimen>
+
+    <!-- Drawables -->
+    <dimen name="cornersRadius">25dp</dimen>
+</resources>

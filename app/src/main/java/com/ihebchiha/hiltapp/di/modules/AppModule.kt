@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.room.Room
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.ihebchiha.hiltapp.R
@@ -16,6 +17,8 @@ import com.ihebchiha.hiltapp.data.database.local.QuotesDatabase
 import com.ihebchiha.hiltapp.data.database.remote.QuotesRemoteDataSource
 import com.ihebchiha.hiltapp.networking.service.QuotesApiService
 import com.ihebchiha.hiltapp.repository.QuotesRepositoryImpl
+import com.ihebchiha.hiltapp.ui.view.activities.login.data.LoginDataSource
+import com.ihebchiha.hiltapp.ui.view.activities.login.data.LoginRepository
 import com.ihebchiha.hiltapp.ui.view.adapters.QuotesAdapter
 import dagger.Module
 import dagger.Provides
@@ -57,6 +60,15 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRepository(remoteDataSource: QuotesRemoteDataSource, localDataSource: QuotesDao) = QuotesRepositoryImpl(remoteDataSource, localDataSource)
+
+
+    @Singleton
+    @Provides
+    fun provideLoginDataSource(firebaseAuth: FirebaseAuth) = LoginDataSource(firebaseAuth)
+
+    @Singleton
+    @Provides
+    fun providesLoginRepo(loginDataSource: LoginDataSource) = LoginRepository(loginDataSource)
 
 //    @Singleton
 //    @Provides
