@@ -43,7 +43,7 @@ class SideMenuAdapter(
 
 
         fun bindViewHolder(position: Int) {
-            itemName.text = menuItems[position].title.toString()
+            itemName.text = view.context.resources.getText(menuItems[position].title)
             itemImage.setImageResource(menuItems[position].icon)
 
             view.setOnClickListener {

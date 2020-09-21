@@ -1,11 +1,15 @@
 package com.ihebchiha.hiltapp.utils.extensions
 
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.Window
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -56,5 +60,19 @@ object CustomDialog {
                 }
             })
         }
+    }
+
+    fun showDialogWithField(activity: AppCompatActivity, titleToPut: String, action: Unit){
+        val dialog = Dialog(activity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.custom_dialog_with_field)
+        val title = dialog.findViewById(R.id.titleTV) as TextView
+        title.text = titleToPut
+        val sendButton = dialog.findViewById(R.id.sendButton) as Button
+        sendButton.setOnClickListener {
+            action
+        }
+        dialog.show()
     }
 }

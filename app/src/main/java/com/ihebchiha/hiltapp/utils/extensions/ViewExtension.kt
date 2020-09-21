@@ -7,6 +7,9 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -48,6 +51,10 @@ fun View.setupSnackbar(
             showSnackbar(context.getString(it), timeLength)
         }
     })
+}
+
+fun AppCompatActivity.navigateToFragment(fragment: Fragment, @IdRes container: Int){
+    this.supportFragmentManager.beginTransaction().replace(container, fragment).commit()
 }
 
 

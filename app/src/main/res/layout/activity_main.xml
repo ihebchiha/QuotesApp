@@ -14,34 +14,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/activity_main_toolBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="center"
-                android:background="@color/blue_3E78FF"
-                android:gravity="center">
-
-
-<!--                <TextView-->
-<!--                    android:id="@+id/toolbar_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingEnd="30dp"-->
-<!--                    android:text="Title"-->
-<!--                    android:textColor="@android:color/white"-->
-<!--                    android:textSize="22sp" />-->
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/activity_main_toolBar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:layout_gravity="center"-->
+<!--                -->
+<!--                android:background="@color/blue_3E78FF"-->
+<!--                android:gravity="center">-->
 
 
-            </androidx.appcompat.widget.Toolbar>
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/toolbar_title"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:paddingStart="15dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:paddingEnd="30dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Title"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="22sp" />&ndash;&gt;-->
 
-        </com.google.android.material.appbar.AppBarLayout>
+
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
 
         <FrameLayout
             android:id="@+id/mainContainer"

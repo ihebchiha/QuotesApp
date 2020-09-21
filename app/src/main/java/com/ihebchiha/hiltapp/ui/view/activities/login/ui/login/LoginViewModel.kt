@@ -15,6 +15,9 @@ import kotlinx.coroutines.launch
 class LoginViewModel @ViewModelInject constructor(private val loginRepository: LoginRepository) :
     ViewModel() {
 
+    private val _forgotPwd = MutableLiveData<Boolean>()
+    val forgotPwd = _forgotPwd
+
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
@@ -31,6 +34,18 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepository: L
                     LoginResult(success = result.data)
             } else {
                 _loginResult.value = LoginResult(error = R.string.login_failed)
+            }
+        }
+    }
+
+    fun sendPasswordResetRequest(email: String){
+        viewModelScope.launch {
+            val result = loginRepository.sendPasswordResetRequest(email)
+
+            if (result is Result.Success) {
+                _forgotPwd.value = result.data
+            } else {
+                _forgotPwd.value = false
             }
         }
     }

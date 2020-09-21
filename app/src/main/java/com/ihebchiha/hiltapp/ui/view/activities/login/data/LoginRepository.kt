@@ -1,7 +1,6 @@
 package com.ihebchiha.hiltapp.ui.view.activities.login.data
 
 import com.google.firebase.auth.FirebaseUser
-import javax.inject.Inject
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -37,6 +36,11 @@ class LoginRepository constructor(private val dataSource: LoginDataSource) {
         }
 
         return result
+    }
+
+    suspend fun sendPasswordResetRequest(email: String): Result<Boolean> {
+        // handle Pwd Reset Request
+        return dataSource.sendPasswordResetRequest(email)
     }
 
     private fun setLoggedInUser(loggedInUser: FirebaseUser) {

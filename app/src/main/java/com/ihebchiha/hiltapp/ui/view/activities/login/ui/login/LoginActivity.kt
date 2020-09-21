@@ -1,13 +1,13 @@
 package com.ihebchiha.hiltapp.ui.view.activities.login.ui.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.Observer
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -15,15 +15,22 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.customview.widget.ViewDragHelper
+import androidx.lifecycle.Observer
 import com.google.firebase.auth.FirebaseUser
 import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.ui.view.activities.MainActivity
+import com.ihebchiha.hiltapp.utils.animation.BetterBounceInterpolator
+import com.ihebchiha.hiltapp.utils.extensions.CustomDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
+import timber.log.Timber
 
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(){
 
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -37,8 +44,9 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-
-
+        goToRegisterPage.animate().apply {
+            interpolator = BetterBounceInterpolator(5, 1.0)
+        }.start()
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
@@ -73,6 +81,16 @@ class LoginActivity : AppCompatActivity() {
         }
 
         setupObservers()
+
+        forgot_pwd.setOnClickListener {
+            CustomDialog.showDialogWithField(this, getString(R.string.forgotpwd), sendPwdResetRequest(username.text.toString()))
+        }
+    }
+
+    private fun sendPwdResetRequest(email: String){
+        if (email.isNotEmpty()) {
+            loginViewModel.sendPasswordResetRequest(email)
+        }
     }
 
     private fun updateUiWithUser(model: FirebaseUser) {
@@ -92,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
@@ -111,15 +129,19 @@ class LoginActivity : AppCompatActivity() {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
-                if (loginResult.error != null) {
-                    showLoginFailed(loginResult.error)
-                }
-                if (loginResult.success != null) {
-                    updateUiWithUser(loginResult.success)
-                }
-                setResult(Activity.RESULT_OK)
+            if (loginResult.error != null) {
+                showLoginFailed(loginResult.error)
+            }
+            if (loginResult.success != null) {
+                updateUiWithUser(loginResult.success)
+            }
+            setResult(Activity.RESULT_OK)
         })
     }
+
+
+
+
 }
 
 /**
