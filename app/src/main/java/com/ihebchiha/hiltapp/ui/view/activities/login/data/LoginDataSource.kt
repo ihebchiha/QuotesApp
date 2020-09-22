@@ -25,6 +25,8 @@ class LoginDataSource constructor(private val firebaseAuth: FirebaseAuth) {
                     if (it.isSuccessful && it.isComplete) {
                         user = it.result!!.user
                         itSC.resume(Result.Success(user!!))
+                    }else{
+                        itSC.resume(Result.Error(it.exception!!))
                     }
                 }
                 task.addOnFailureListener {

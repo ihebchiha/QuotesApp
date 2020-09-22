@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black40000000">
+    android:background="@drawable/dialog_rounded_corners">
 
     <View
         android:id="@+id/dialogContainer"
@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lemonmilkmedium"
+        android:text="@string/write_the_email_to_receive_password_reset_request"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:layout_margin="15dp"
@@ -42,7 +43,7 @@
 
     <EditText
         android:id="@+id/emailET"
-        android:layout_width="match_parent"
+        android:layout_width="325dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lemonmilkmedium"
         android:hint="@string/email"

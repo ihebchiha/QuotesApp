@@ -4,6 +4,7 @@
     <dimen name="titleSize">32sp</dimen>
     <dimen name="subTitleSize">24sp</dimen>
     <dimen name="paragSize">13sp</dimen>
+    <dimen name="nameFontSize">16sp</dimen>
 
     <!-- Drawables -->
     <dimen name="cornersRadius">25dp</dimen>

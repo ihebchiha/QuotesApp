@@ -8,6 +8,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +63,7 @@ object CustomDialog {
         }
     }
 
-    fun showDialogWithField(activity: AppCompatActivity, titleToPut: String, action: Unit){
+    fun showDialogWithField(activity: AppCompatActivity, titleToPut: String, action: (email: String) -> Unit){
         val dialog = Dialog(activity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -70,9 +71,8 @@ object CustomDialog {
         val title = dialog.findViewById(R.id.titleTV) as TextView
         title.text = titleToPut
         val sendButton = dialog.findViewById(R.id.sendButton) as Button
-        sendButton.setOnClickListener {
-            action
-        }
+        val emailET = dialog.findViewById<EditText>(R.id.emailET)
+        sendButton.setOnClickListener { action(emailET.text.toString()) }
         dialog.show()
     }
 }

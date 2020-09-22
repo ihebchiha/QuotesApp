@@ -65,9 +65,9 @@ class MainActivity : BaseActivity() {
         sideMenuAdapter.menuItemClicked = {position ->
             when (position){
                 QUOTE_OF_THE_DAY -> {}
-//                ALL_QUOTES -> {findNavController().navigate(R.id.quotesFragment)}
+                ALL_QUOTES -> {findNavController(R.id.nav_host_fragment).navigate(R.id.quotesFragment)}
                 FAVORITES -> {}
-                PROFILE -> {}
+                PROFILE -> { findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)}
                 LOGOUT -> { firebaseAuth.currentUser.apply {
                     firebaseAuth.signOut()
                     startActivity(Intent(applicationContext, LoginActivity::class.java))

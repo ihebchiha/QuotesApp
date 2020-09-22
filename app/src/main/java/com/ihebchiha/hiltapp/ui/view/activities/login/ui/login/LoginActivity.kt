@@ -24,6 +24,8 @@ import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.ui.view.activities.MainActivity
 import com.ihebchiha.hiltapp.utils.animation.BetterBounceInterpolator
 import com.ihebchiha.hiltapp.utils.extensions.CustomDialog
+import com.ihebchiha.hiltapp.utils.extensions.EMAIL_INPUT_TYPE
+import com.ihebchiha.hiltapp.utils.extensions.checkInputValidity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 import timber.log.Timber
@@ -83,12 +85,12 @@ class LoginActivity : AppCompatActivity(){
         setupObservers()
 
         forgot_pwd.setOnClickListener {
-            CustomDialog.showDialogWithField(this, getString(R.string.forgotpwd), sendPwdResetRequest(username.text.toString()))
+            CustomDialog.showDialogWithField(this, getString(R.string.write_the_email_to_receive_password_reset_request)){ input -> sendPwdResetRequest(input) }
         }
     }
 
     private fun sendPwdResetRequest(email: String){
-        if (email.isNotEmpty()) {
+        if (email.checkInputValidity(EMAIL_INPUT_TYPE)) {
             loginViewModel.sendPasswordResetRequest(email)
         }
     }

@@ -28,4 +28,10 @@
     <string name="email">email</string>
     <string name="forgotpwd">Did you forgot your password ?</string>
     <string name="logout">Log out</string>
+    <string name="write_the_email_to_receive_password_reset_request">Write the email to receive password reset request</string>
+    <string name="email_label">Email:</string>
+    <string name="update_to_your_new_email">Update to your new email</string>
+    <string name="birthplace">Birthplace:</string>
+    <string name="update_your_birthplace">Update your Birthplace</string>
+    <string name="user_info">User Info</string>
 </resources>

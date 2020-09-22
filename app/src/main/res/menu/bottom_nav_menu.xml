@@ -2,12 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/item_home"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/item_qotd"
+        android:icon="@drawable/ic_star"
         app:showAsAction="ifRoom"
-        android:title="@string/home_label" />
+        android:title="@string/qotd_label" />
 
+    <item
+        android:id="@+id/item_all_quote"
+        android:icon="@drawable/ic_quote_24"
+        app:showAsAction="ifRoom"
+        android:title="@string/qotd_label" />
 
+    <item android:id="@+id/item_fav"
+        android:icon="@drawable/ic_favorite"
+        app:showAsAction="ifRoom"
+        android:title="@string/favorite_label"/>
     <item
         android:id="@+id/item_person"
         android:icon="@drawable/ic_account_circle"

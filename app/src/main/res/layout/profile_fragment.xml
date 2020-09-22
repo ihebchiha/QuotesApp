@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:context=".ui.view.fragments.profile.ProfileFragment">
+
+        <View
+            android:id="@+id/avatarInfosContainer"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@drawable/view_rounded_corners"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/userAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toTopOf="@id/userNickname"
+            app:layout_constraintEnd_toEndOf="@id/avatarInfosContainer"
+            app:layout_constraintStart_toStartOf="@id/avatarInfosContainer"
+            app:layout_constraintTop_toTopOf="@id/avatarInfosContainer"
+            app:layout_constraintVertical_bias="0.25"
+            app:placeholderImage="@drawable/cav_mata_leao"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@android:color/white"
+            app:roundingBorderWidth="3dp" />
+
+        <EditText
+            android:id="@+id/userNickname"
+            style="@style/titlesTextViewStyle"
+            android:layout_height="24dp"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:textSize="@dimen/nameFontSize"
+            app:layout_constraintBottom_toBottomOf="@+id/avatarInfosContainer"
+            app:layout_constraintEnd_toEndOf="@+id/userAvatar"
+            app:layout_constraintStart_toStartOf="@+id/userAvatar"
+            app:layout_constraintTop_toBottomOf="@id/userAvatar"
+            tools:text="Gahtouna" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="@id/avatarInfosContainer"
+            app:layout_constraintEnd_toEndOf="@id/avatarInfosContainer"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/userNickname"
+            app:layout_constraintTop_toBottomOf="@id/userAvatar"
+            app:layout_constraintVertical_bias="0.40" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="38dp"
+            app:layout_constraintTop_toTopOf="@id/avatarInfosContainer" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_end="38dp"
+            app:layout_constraintTop_toTopOf="@id/avatarInfosContainer" />
+
+        <ImageView
+            android:id="@+id/helpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_info"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintTop_toBottomOf="@id/avatarInfosContainer" />
+
+
+        <TextView
+            android:id="@+id/userInfoLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:text="@string/user_info"
+            app:layout_constraintBottom_toTopOf="@id/userInfoContainer"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/avatarInfosContainer" />
+
+        <!-- Email Section -->
+
+        <View
+            android:id="@+id/userInfoContainer"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/view_all_rounded_corners"
+
+            android:elevation="12dp"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/userInfoLabel" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:text="@string/email_label"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/userEmail"
+            app:layout_constraintEnd_toEndOf="@+id/userEmail"
+            app:layout_constraintEnd_toStartOf="@id/userEmail"
+            app:layout_constraintStart_toStartOf="@+id/userEmail"
+            app:layout_constraintTop_toTopOf="@+id/userEmail" />
+
+        <!-- Birthplace section -->
+
+        <EditText
+            android:id="@+id/userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="12dp"
+            android:enabled="false"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:hint="@string/update_to_your_new_email"
+            android:textSize="@dimen/nameFontSize"
+            app:layout_constraintBottom_toTopOf="@id/userBirthplace"
+            app:layout_constraintEnd_toEndOf="@+id/userBirthplace"
+            app:layout_constraintStart_toEndOf="@id/emailLabel"
+            app:layout_constraintTop_toTopOf="@id/userInfoContainer"
+            app:layout_constraintVertical_bias="0.51" />
+
+        <TextView
+            android:id="@+id/userBirthplaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:text="@string/birthplace"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@id/userBirthplace"
+            app:layout_constraintEnd_toStartOf="@+id/userBirthplace"
+            app:layout_constraintStart_toEndOf="@+id/userInfoContainer"
+            app:layout_constraintStart_toStartOf="@id/userInfoContainer"
+            app:layout_constraintTop_toTopOf="@id/userBirthplace" />
+
+        <EditText
+            android:id="@+id/userBirthplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="12dp"
+            android:enabled="false"
+            android:fontFamily="@font/blackboardschoolawesome"
+            android:hint="@string/update_your_birthplace"
+            android:textSize="@dimen/nameFontSize"
+            app:layout_constraintBottom_toBottomOf="@+id/userInfoContainer"
+            app:layout_constraintEnd_toEndOf="@id/userEmail"
+            app:layout_constraintStart_toEndOf="@+id/userBirthplaceLabel"
+            app:layout_constraintTop_toTopOf="@+id/userInfoContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

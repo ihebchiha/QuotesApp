@@ -1,5 +1,7 @@
 package com.ihebchiha.hiltapp.utils.extensions
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +57,10 @@ fun View.setupSnackbar(
 
 fun AppCompatActivity.navigateToFragment(fragment: Fragment, @IdRes container: Int){
     this.supportFragmentManager.beginTransaction().replace(container, fragment).commit()
+}
+
+fun AppCompatActivity.navigateWithPayload(activity: AppCompatActivity, payload: Bundle){
+    startActivity(Intent(this.applicationContext, activity::class.java), payload)
 }
 
 
