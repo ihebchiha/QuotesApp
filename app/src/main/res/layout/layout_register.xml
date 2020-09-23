@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registerBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="50dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:layout_constraintCircleRadius="25dp">
+
+    <ImageView
+        android:id="@+id/goToRegisterPageArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_up"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/register_indication_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/register_indication_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="@string/swipe_up_to_register"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/registerLabel"
+        app:layout_constraintEnd_toEndOf="@+id/goToRegisterPageArrow"
+        app:layout_constraintStart_toStartOf="@+id/goToRegisterPageArrow" />
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/view_different_rounded_corners"
+        android:elevation="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_indication_label"/>
+    <TextView
+        android:id="@+id/registerLabel"
+        style="@style/LabelsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="@string/register"
+        android:textSize="25sp"
+        android:elevation="12dp"
+        android:background="@drawable/view_different_rounded_corners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@id/registerContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/background" />
+
+    <View
+        android:id="@+id/registerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/view_all_rounded_corners"
+        android:elevation="12dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerLabel" />
+
+
+    <ImageView
+        android:id="@+id/facebookIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="12dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_facebook"
+        app:layout_constraintEnd_toStartOf="@id/googleIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/registerContainer"
+        app:layout_constraintTop_toTopOf="@id/registerContainer" />
+
+    <ImageView
+        android:id="@+id/googleIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="12dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintBottom_toBottomOf="@+id/facebookIcon"
+        app:layout_constraintEnd_toStartOf="@id/twitterIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/facebookIcon"
+        app:layout_constraintTop_toTopOf="@+id/registerContainer" />
+
+    <ImageView
+        android:id="@+id/twitterIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="12dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_twitter"
+        app:layout_constraintBottom_toBottomOf="@+id/googleIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@id/googleIcon"
+        app:layout_constraintTop_toTopOf="@+id/registerContainer"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/registerMethodIndicationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_method_label"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:elevation="12dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="@id/registerContainer"
+        app:layout_constraintEnd_toEndOf="@id/registerContainer"
+        app:layout_constraintTop_toBottomOf="@id/googleIcon"
+        app:layout_constraintBottom_toTopOf="@id/seperator"/>
+
+    <View
+        android:id="@+id/seperator"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/grayForDivider"
+        android:layout_margin="25dp"
+        app:layout_constraintTop_toBottomOf="@id/registerMethodIndicationLabel"
+        app:layout_constraintStart_toStartOf="@id/registerContainer"
+        app:layout_constraintEnd_toEndOf="@id/registerContainer"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/registerEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:elevation="12dp"
+        android:hint="@string/email"
+
+        app:layout_constraintBottom_toTopOf="@id/registerPassword"
+        app:layout_constraintCircleRadius="@dimen/cornersRadius"
+        app:layout_constraintEnd_toEndOf="@id/registerContainer"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="@id/registerContainer"
+        app:layout_constraintTop_toBottomOf="@id/seperator" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/registerPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintCircleRadius="@dimen/cornersRadius"
+        android:hint="@string/prompt_password"
+        android:layout_margin="15dp"
+        android:elevation="12dp"
+        app:layout_constraintTop_toBottomOf="@id/registerEmail"
+        app:layout_constraintStart_toStartOf="@id/registerContainer"
+        app:layout_constraintEnd_toEndOf="@id/registerContainer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

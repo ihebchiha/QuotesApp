@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android">
-    <font android:font="@font/quick_kiss" android:fontStyle="normal"/>
-    <font android:font="@font/beautiful_people" android:fontStyle="normal"/>
-</font-family>

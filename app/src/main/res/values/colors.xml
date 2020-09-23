@@ -13,4 +13,12 @@
 
     <!-- Black -->
     <color name="black40000000">#40000000</color>
+
+    <!-- gray -->
+    <color name="grayForDivider">#F2E5DEDE</color>
+    <color name="grayForBackground">#f2f0f0</color>
+
+
+    <!-- Beige -->
+    <color name="beigeBackground">#E8D8C9</color>
 </resources>

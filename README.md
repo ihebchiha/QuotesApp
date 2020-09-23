@@ -8,4 +8,7 @@
     Hilt and Dagger
     Jetpack Navigation
     Firebase Authetification
+    
+#Design
+    font: Fosterama by Chequered Ink => https://www.fontspace.com/fosterama-font-f50592
 

@@ -65,7 +65,7 @@
             android:animateLayoutChanges="false"
             android:background="@android:color/white"
             app:itemHorizontalTranslationEnabled="false"
-            app:labelVisibilityMode="unlabeled"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_nav_menu"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Platforms"
+                    android:text="@string/platforms"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"

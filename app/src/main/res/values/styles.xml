@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/blue_3E78FF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/fosterama</item>
     </style>
 
     <style name="titlesTextViewStyle">
@@ -12,6 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:fontFamily">@font/beauty_mountains</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/titleSize</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
@@ -28,13 +30,19 @@
     <style name="paragTextViewStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/amsterdam</item>
         <item name="android:textSize">@dimen/paragSize</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at libero cursus, convallis tortor ut, molestie lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi porttitor tellus et sem egestas vestibulum. Etiam et magna et dui blandit imperdiet. In ullamcorper orci elit, eu elementum quam consequat sit amet. Sed id congue urna, a cursus lectus. Maecenas dui ipsum, mollis nec tortor a, sodales vehicula felis. Donec eu ultrices erat. Quisque lectus nibh, ultricies a convallis quis, pretium ut tortor. Nulla vitae nisl erat. In mollis enim elit, eget consequat augue dignissim at. Quisque ut aliquam est. Etiam finibus bibendum dui, id venenatis est faucibus non.
             Ut in dictum velit, sed auctor ipsum. Aenean at nibh in augue tristique tristique. Donec ac nisi sodales dolor condimentum congue sit amet malesuada dolor. Duis suscipit fringilla quam non dignissim. Proin sodales rutrum odio a convallis. Pellentesque eget tincidunt velit. Duis pellentesque pellentesque scelerisque. Nam laoreet elementum eros vitae ultrices. Quisque posuere nulla nibh, luctus imperdiet nisl dictum sed. Aliquam gravida quam vel libero lacinia mattis. Praesent dictum dui purus, vel luctus tellus feugiat non. Mauris sed elit purus. Etiam lacinia suscipit enim, eget tempor enim mollis vel. Morbi sollicitudin euismod eros non mattis</item>
+    </style>
+
+
+    <style name="LabelsStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 </resources>

@@ -1,14 +1,12 @@
 package com.ihebchiha.hiltapp.ui.view.activities.login.ui.login
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AccelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
@@ -17,28 +15,27 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.customview.widget.ViewDragHelper
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseUser
 import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.ui.view.activities.MainActivity
-import com.ihebchiha.hiltapp.utils.animation.BetterBounceInterpolator
 import com.ihebchiha.hiltapp.utils.extensions.CustomDialog
 import com.ihebchiha.hiltapp.utils.extensions.EMAIL_INPUT_TYPE
 import com.ihebchiha.hiltapp.utils.extensions.checkInputValidity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
-import timber.log.Timber
+import kotlinx.android.synthetic.main.layout_register.*
 
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity(){
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private val loginViewModel: LoginViewModel by viewModels()
-
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
         val username = findViewById<EditText>(R.id.username)
@@ -46,9 +43,7 @@ class LoginActivity : AppCompatActivity(){
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        goToRegisterPage.animate().apply {
-            interpolator = BetterBounceInterpolator(5, 1.0)
-        }.start()
+        forgot_pwd.setOnClickListener(this)
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
@@ -84,12 +79,65 @@ class LoginActivity : AppCompatActivity(){
 
         setupObservers()
 
-        forgot_pwd.setOnClickListener {
-            CustomDialog.showDialogWithField(this, getString(R.string.write_the_email_to_receive_password_reset_request)){ input -> sendPwdResetRequest(input) }
+        bottomSheetBehavior = BottomSheetBehavior.from(registerBottomSheet)
+
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                // handle onSlide
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                        animateArrow(true)
+                        register_indication_label.text = getString(R.string.swipe_up_to_register)
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                        animateArrow(false)
+                        register_indication_label.text = getString(R.string.swipe_down_to_cancel)
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                    }
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                    }
+                    else -> {
+                    }
+                }
+            }
+        })
+
+
+    }
+
+    fun animateArrow(isCollapsed: Boolean) {
+        var rotation = 360f
+        if (!isCollapsed) {
+            rotation = 180f
+        }
+        goToRegisterPageArrow.animate().apply {
+            rotation(rotation)
+            interpolator = AccelerateInterpolator()
+        }.start()
+    }
+
+    override fun onClick(p0: View?) {
+        when (p0!!.id) {
+            R.id.forgot_pwd -> {
+                CustomDialog.showDialogWithField(
+                    this,
+                    getString(R.string.write_the_email_to_receive_password_reset_request)
+                ) { input -> sendPwdResetRequest(input) }
+            }
+            R.id.login -> {
+            }
         }
     }
 
-    private fun sendPwdResetRequest(email: String){
+    private fun sendPwdResetRequest(email: String) {
         if (email.checkInputValidity(EMAIL_INPUT_TYPE)) {
             loginViewModel.sendPasswordResetRequest(email)
         }
@@ -140,8 +188,6 @@ class LoginActivity : AppCompatActivity(){
             setResult(Activity.RESULT_OK)
         })
     }
-
-
 
 
 }

@@ -2,12 +2,12 @@
 
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="25dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:context=".ui.view.fragments.profile.ProfileFragment">
@@ -42,13 +42,12 @@
             android:layout_height="24dp"
             android:background="@android:color/transparent"
             android:enabled="false"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:textSize="@dimen/nameFontSize"
             app:layout_constraintBottom_toBottomOf="@+id/avatarInfosContainer"
             app:layout_constraintEnd_toEndOf="@+id/userAvatar"
             app:layout_constraintStart_toStartOf="@+id/userAvatar"
             app:layout_constraintTop_toBottomOf="@id/userAvatar"
-            tools:text="Gahtouna" />
+            tools:text="User Display Name" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -96,8 +95,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:text="@string/user_info"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/subTitleSize"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/userInfoContainer"
             app:layout_constraintEnd_toStartOf="@id/rightGuideline"
             app:layout_constraintStart_toEndOf="@id/leftGuideline"
@@ -105,64 +106,65 @@
 
         <!-- Email Section -->
 
+        <!-- Birthplace section -->
+
         <View
             android:id="@+id/userInfoContainer"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginTop="28dp"
+            android:layout_marginBottom="28dp"
             android:background="@drawable/view_all_rounded_corners"
-
             android:elevation="12dp"
             app:layout_constraintEnd_toStartOf="@id/rightGuideline"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/userInfoLabel" />
 
         <TextView
             android:id="@+id/emailLabel"
+            style="@style/LabelsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="12dp"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:text="@string/email_label"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="@+id/userEmail"
-            app:layout_constraintEnd_toEndOf="@+id/userEmail"
             app:layout_constraintEnd_toStartOf="@id/userEmail"
-            app:layout_constraintStart_toStartOf="@+id/userEmail"
-            app:layout_constraintTop_toTopOf="@+id/userEmail" />
-
-        <!-- Birthplace section -->
+            app:layout_constraintHorizontal_bias="0.388"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toTopOf="@+id/userEmail"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
             android:background="@android:color/transparent"
             android:elevation="12dp"
             android:enabled="false"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:hint="@string/update_to_your_new_email"
             android:textSize="@dimen/nameFontSize"
             app:layout_constraintBottom_toTopOf="@id/userBirthplace"
-            app:layout_constraintEnd_toEndOf="@+id/userBirthplace"
-            app:layout_constraintStart_toEndOf="@id/emailLabel"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintTop_toTopOf="@id/userInfoContainer"
-            app:layout_constraintVertical_bias="0.51" />
+            app:layout_constraintVertical_bias="0.505" />
 
         <TextView
             android:id="@+id/userBirthplaceLabel"
+            style="@style/LabelsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="12dp"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:text="@string/birthplace"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="@id/userBirthplace"
             app:layout_constraintEnd_toStartOf="@+id/userBirthplace"
             app:layout_constraintStart_toEndOf="@+id/userInfoContainer"
             app:layout_constraintStart_toStartOf="@id/userInfoContainer"
-            app:layout_constraintTop_toTopOf="@id/userBirthplace" />
+            app:layout_constraintTop_toTopOf="@id/userBirthplace"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/userBirthplace"
@@ -171,13 +173,100 @@
             android:background="@android:color/transparent"
             android:elevation="12dp"
             android:enabled="false"
-            android:fontFamily="@font/blackboardschoolawesome"
             android:hint="@string/update_your_birthplace"
             android:textSize="@dimen/nameFontSize"
             app:layout_constraintBottom_toBottomOf="@+id/userInfoContainer"
-            app:layout_constraintEnd_toEndOf="@id/userEmail"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toEndOf="@+id/userBirthplaceLabel"
-            app:layout_constraintTop_toTopOf="@+id/userInfoContainer" />
+            app:layout_constraintTop_toTopOf="@+id/userInfoContainer"
+            app:layout_constraintVertical_bias="0.497" />
+
+        <TextView
+            android:id="@+id/userBirthdateLabel"
+            style="@style/LabelsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            android:text="@string/birthdate"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@id/userBirthdate"
+            app:layout_constraintEnd_toStartOf="@+id/userBirthdate"
+            app:layout_constraintStart_toEndOf="@+id/userInfoContainer"
+            app:layout_constraintStart_toStartOf="@id/userInfoContainer"
+            app:layout_constraintTop_toTopOf="@id/userBirthdate"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/userBirthdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="12dp"
+            android:enabled="false"
+            android:hint="@string/update_your_birthplace"
+            android:textSize="@dimen/nameFontSize"
+            app:layout_constraintBottom_toBottomOf="@+id/userInfoContainer"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toEndOf="@+id/userBirthdateLabel"
+            app:layout_constraintTop_toBottomOf="@+id/userBirthplace"
+            app:layout_constraintVertical_bias="0.464" />
+
+        <!-- Account Management -->
+        <TextView
+            android:id="@+id/accountMngLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/account_management"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/subTitleSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/accountManagementContainer"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/userInfoContainer" />
+
+        <View
+            android:id="@+id/accountManagementContainer"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/view_all_rounded_corners"
+            android:elevation="12dp"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/accountMngLabel" />
+
+        <!-- Settings -->
+        <TextView
+            android:id="@+id/settingsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/settings"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/subTitleSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/settingsContainer"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/accountManagementContainer" />
+
+        <View
+            android:id="@+id/settingsContainer"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/view_all_rounded_corners"
+            android:elevation="12dp"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@id/settingsLabel"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
