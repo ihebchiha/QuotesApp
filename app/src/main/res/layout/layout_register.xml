@@ -76,11 +76,11 @@
 
     <ImageView
         android:id="@+id/facebookIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:elevation="12dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_facebook"
+        android:src="@drawable/facebook_circled"
         app:layout_constraintEnd_toStartOf="@id/googleIcon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/registerContainer"
@@ -88,11 +88,11 @@
 
     <ImageView
         android:id="@+id/googleIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:elevation="12dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_google"
+        android:src="@drawable/google_circled"
         app:layout_constraintBottom_toBottomOf="@+id/facebookIcon"
         app:layout_constraintEnd_toStartOf="@id/twitterIcon"
         app:layout_constraintHorizontal_bias="0.5"
@@ -101,11 +101,11 @@
 
     <ImageView
         android:id="@+id/twitterIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:elevation="12dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_twitter"
+        android:src="@drawable/twitter_circled"
         app:layout_constraintBottom_toBottomOf="@+id/googleIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

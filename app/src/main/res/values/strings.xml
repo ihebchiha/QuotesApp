@@ -22,6 +22,7 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
+    <string name="no_input_entered">Please enter your username and password</string>
     <string name="login_failed">"Login failed"</string>
     <string name="swipe_up_to_register">swipe up to register</string>
     <string name="swipe_down_to_cancel">swipe down to cancel registration</string>

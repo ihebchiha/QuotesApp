@@ -26,14 +26,18 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepository: L
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        viewModelScope.launch {
-            val result = loginRepository.login(username, password)
+        if (username.isEmpty() || password.isEmpty()){
+            _loginForm.value = LoginFormState(noInputEntered = R.string.no_input_entered)
+        }else {
+            viewModelScope.launch {
+                val result = loginRepository.login(username, password)
 
-            if (result is Result.Success) {
-                _loginResult.value =
-                    LoginResult(success = result.data)
-            } else {
-                _loginResult.value = LoginResult(error = R.string.login_failed)
+                if (result is Result.Success) {
+                    _loginResult.value =
+                        LoginResult(success = result.data)
+                } else {
+                    _loginResult.value = LoginResult(error = R.string.login_failed)
+                }
             }
         }
     }

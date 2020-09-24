@@ -8,6 +8,7 @@
 
     <!-- Drawables -->
     <dimen name="cornersRadius">25dp</dimen>
+    <dimen name="buttonCornersRadius">15dp</dimen>
 
     <!-- Dimensions -->
     <dimen name="font_size_16">16sp</dimen>

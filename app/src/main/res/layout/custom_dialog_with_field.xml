@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/dialog_rounded_corners">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_all_rounded_corners">
 
     <View
         android:id="@+id/dialogContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:background="@drawable/dialog_rounded_corners"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/view_all_rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/titleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:maxEms="14"
         android:text="@string/write_the_email_to_receive_password_reset_request"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:layout_margin="15dp"
-        android:maxEms="16"
-        app:layout_constraintTop_toTopOf="@id/dialogContainer"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/emailET"
-        app:layout_constraintStart_toStartOf="@id/emailET"
         app:layout_constraintEnd_toEndOf="@id/emailET"
-        tools:text="Write the email to receive password reset request"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/emailET"
+        app:layout_constraintTop_toTopOf="@id/dialogContainer"
+        tools:text="Write the email to receive password reset request" />
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/dialogContainer"
-        app:layout_constraintStart_toStartOf="@id/dialogContainer"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toStartOf="@id/titleTV"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintStart_toStartOf="@id/dialogContainer"
+        app:layout_constraintTop_toTopOf="@id/dialogContainer" />
 
     <EditText
         android:id="@+id/emailET"
-        android:layout_width="325dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
         android:layout_margin="25dp"
-        app:layout_constraintTop_toBottomOf="@id/titleTV"
+        android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="@id/dialogContainer"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/dialogContainer" />
+        app:layout_constraintStart_toStartOf="@id/dialogContainer"
+        app:layout_constraintTop_toBottomOf="@id/titleTV" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="@string/send"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_rounded_corners_with_border"
         android:drawableStart="@drawable/ic_send"
-        app:layout_constraintTop_toBottomOf="@id/emailET"
-        app:layout_constraintStart_toStartOf="@id/dialogContainer"
-        app:layout_constraintEnd_toEndOf="@id/dialogContainer"
-        app:layout_constraintBottom_toBottomOf="@id/dialogContainer"/>
+        android:padding="5dp"
+        android:text="@string/send"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/dialogContainer"
+        app:layout_constraintEnd_toEndOf="@id/emailET"
+        app:layout_constraintStart_toStartOf="@id/emailET"
+        app:layout_constraintTop_toBottomOf="@id/emailET" />
 </androidx.constraintlayout.widget.ConstraintLayout>

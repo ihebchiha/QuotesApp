@@ -8,10 +8,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -40,7 +37,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
-        val login = findViewById<Button>(R.id.login)
+        val login = findViewById<TextView>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
         forgot_pwd.setOnClickListener(this)
@@ -71,12 +68,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 false
             }
 
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
-            }
         }
-
+        login.setOnClickListener {
+            loading.visibility = View.VISIBLE
+            loginViewModel.login(username.text.toString(), password.text.toString())
+        }
         setupObservers()
 
         bottomSheetBehavior = BottomSheetBehavior.from(registerBottomSheet)
@@ -93,14 +89,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
                         animateArrow(true)
                         register_indication_label.text = getString(R.string.swipe_up_to_register)
+                        username.visibility = View.VISIBLE
                     }
                     BottomSheetBehavior.STATE_EXPANDED -> {
                         animateArrow(false)
                         register_indication_label.text = getString(R.string.swipe_down_to_cancel)
+                        username.visibility = View.GONE
                     }
                     BottomSheetBehavior.STATE_DRAGGING -> {
+                        username.visibility = View.VISIBLE
                     }
                     BottomSheetBehavior.STATE_SETTLING -> {
+                        username.visibility = View.VISIBLE
                     }
                     BottomSheetBehavior.STATE_HIDDEN -> {
                     }
@@ -157,7 +157,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+        CustomDialog.showPopUpMessageDialog(this, true, getString(errorString), CustomDialog.SLIDE_DOWN_ANIMATION)
     }
 
     private fun setupObservers() {
@@ -172,6 +172,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
             if (loginState.passwordError != null) {
                 password.error = getString(loginState.passwordError)
+            }
+            if (loginState.noInputEntered != null){
+                username.error = getString(loginState.usernameError!!)
+                password.error = getString(loginState.passwordError!!)
             }
         })
 
