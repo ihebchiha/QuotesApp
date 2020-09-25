@@ -2,6 +2,7 @@ package com.ihebchiha.hiltapp.ui.view.activities.login.data
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.ihebchiha.hiltapp.networking.result.models.PasswordResetRequest
 import java.io.IOException
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -39,12 +40,18 @@ class LoginDataSource constructor(private val firebaseAuth: FirebaseAuth) {
         }
 
     suspend fun sendPasswordResetRequest(email: String) =
-        suspendCoroutine<Result<Boolean>> { itsc ->
+        suspendCoroutine<Result<PasswordResetRequest>> { itsc ->
             try {
+                val passwordResetRequest = PasswordResetRequest(false, null)
                 val task = firebaseAuth.sendPasswordResetEmail(email)
+                task.addOnFailureListener {
+                    itsc.resume(Result.Error(it))
+                }
                 task.addOnCompleteListener {
                     if (task.isSuccessful) {
-                        itsc.resume(Result.Success(true))
+                        passwordResetRequest.status = true
+                        passwordResetRequest.error = null
+                        itsc.resume(Result.Success(passwordResetRequest))
                     }
                 }
             } catch (e: Exception) {

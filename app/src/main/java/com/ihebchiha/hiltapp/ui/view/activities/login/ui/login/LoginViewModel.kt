@@ -10,6 +10,7 @@ import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.ui.view.activities.login.data.LoginRepository
 import com.ihebchiha.hiltapp.ui.view.activities.login.data.Result
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 class LoginViewModel @ViewModelInject constructor(private val loginRepository: LoginRepository) :
@@ -18,11 +19,19 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepository: L
     private val _forgotPwd = MutableLiveData<Boolean>()
     val forgotPwd = _forgotPwd
 
+    private val _forgotPwdException = MutableLiveData<Exception>()
+    val forgotPwdException = _forgotPwdException
+
+
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
+
+
+
+
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
@@ -47,9 +56,10 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepository: L
             val result = loginRepository.sendPasswordResetRequest(email)
 
             if (result is Result.Success) {
-                _forgotPwd.value = result.data
-            } else {
-                _forgotPwd.value = false
+                _forgotPwd.value = result.data.status
+            }
+            if (result is Result.Error){
+                _forgotPwdException.value = result.exception
             }
         }
     }

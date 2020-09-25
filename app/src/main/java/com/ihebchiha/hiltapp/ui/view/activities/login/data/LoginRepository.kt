@@ -1,6 +1,7 @@
 package com.ihebchiha.hiltapp.ui.view.activities.login.data
 
 import com.google.firebase.auth.FirebaseUser
+import com.ihebchiha.hiltapp.networking.result.models.PasswordResetRequest
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -38,7 +39,7 @@ class LoginRepository constructor(private val dataSource: LoginDataSource) {
         return result
     }
 
-    suspend fun sendPasswordResetRequest(email: String): Result<Boolean> {
+    suspend fun sendPasswordResetRequest(email: String): Result<PasswordResetRequest> {
         // handle Pwd Reset Request
         return dataSource.sendPasswordResetRequest(email)
     }

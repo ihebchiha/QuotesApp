@@ -1,122 +1,77 @@
 package com.ihebchiha.hiltapp.utils.extensions
 
-import android.app.Dialog
-import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.DialogFragment
 import com.ihebchiha.hiltapp.R
+import kotlinx.android.synthetic.main.custom_dialog_with_field.*
 
-object CustomDialog {
-    const val SLIDE_DOWN_ANIMATION = 1
-    const val FADE_OUT_ANIMATION = 2
+class CustomDialog(private val titleToPut: String, val action: (email: String) -> Unit) :
+    DialogFragment(), View.OnClickListener {
 
-    fun showPopUpMessageDialog(
-        context: AppCompatActivity,
-        isError: Boolean,
-        message: String,
-        animationType: Int
-    ) {
-        val viewGroup = context.findViewById<ViewGroup>(android.R.id.content)
-        val view = LayoutInflater.from(context).inflate(R.layout.error_layout, viewGroup, false);
-        view.findViewById<TextView>(R.id.messageTV).text = message
-        view.findViewById<ConstraintLayout>(R.id.messageContainer).background =
-            if (isError) ContextCompat.getDrawable(
-                context,
-                R.drawable.view_error_message_rounded_corners
-            ) else ContextCompat.getDrawable(context, R.drawable.view_message_rounded_corners)
-        viewGroup.addView(view)
-        AnimationUtils.loadAnimation(context, R.anim.animation).also { animation ->
-            view.startAnimation(animation)
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationStart(p0: Animation?) {}
-                override fun onAnimationRepeat(p0: Animation?) {}
-                override fun onAnimationEnd(p0: Animation?) {
-                    p0!!.cancel()
-                    view.animate().apply {
-                        when (animationType) {
-                            SLIDE_DOWN_ANIMATION -> {
-                                translationY(250f)
-                            }
-                            FADE_OUT_ANIMATION -> {
-                                alpha(0f)
-                            }
-                            else -> {
-                                alpha(0f)
-                            }
-                        }
-                        startDelay = 1500
-                        duration = 1500
-                        interpolator = AccelerateInterpolator()
-                    }.start()
-                }
-            })
+    private lateinit var emailET:EditText
+    private lateinit var send: Button
+    private lateinit var titleTv: TextView
+    private lateinit var errorMessageTv: TextView
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.custom_dialog_with_field, container);
+
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(titleToPut: String, action: (email: String) -> Unit) =
+            CustomDialog(titleToPut = titleToPut, action = action).apply {}
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        titleTv = view.findViewById(R.id.titleTV)
+        errorMessageTv = view.findViewById(R.id.errorMessageLabel)
+        titleTv.text = titleToPut
+
+        send = view.findViewById(R.id.sendButton)
+        send.setOnClickListener(this)
+
+        emailET = view.findViewById(R.id.emailET)
+
+    }
+
+    override fun onClick(p0: View?) {
+        if (p0!!.id == R.id.sendButton) {
+            action(emailET.text.toString())
         }
     }
 
-    fun showPopUpMessageDialog(
-        context: FragmentActivity,
-        isError: Boolean,
-        message: String,
-        animationType: Int
-    ) {
-        val viewGroup = context.findViewById<ViewGroup>(android.R.id.content)
-        val view = LayoutInflater.from(context).inflate(R.layout.error_layout, viewGroup, false);
-        view.findViewById<TextView>(R.id.messageTV).text = message
-        view.findViewById<ConstraintLayout>(R.id.messageContainer).background =
-            if (isError) ContextCompat.getDrawable(
-                context,
-                R.drawable.view_error_message_rounded_corners
-            ) else ContextCompat.getDrawable(context, R.drawable.view_message_rounded_corners)
-        viewGroup.addView(view)
-        AnimationUtils.loadAnimation(context, R.anim.animation).also { animation ->
-            view.startAnimation(animation)
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationStart(p0: Animation?) {}
-                override fun onAnimationRepeat(p0: Animation?) {}
-                override fun onAnimationEnd(p0: Animation?) {
-                    p0!!.cancel()
-                    view.animate().apply {
-                        when (animationType) {
-                            SLIDE_DOWN_ANIMATION -> {
-                                translationY(250f)
-                            }
-                            FADE_OUT_ANIMATION -> {
-                                alpha(0f)
-                            }
-                            else -> {
-                                alpha(0f)
-                            }
-                        }
-                        startDelay = 1500
-                        duration = 1500
-                        interpolator = AccelerateInterpolator()
-                    }.start()
-                }
-            })
-        }
-    }
 
-    fun showDialogWithField(activity: AppCompatActivity, titleToPut: String, action: (email: String) -> Unit){
-        val dialog = Dialog(activity)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(true)
-        dialog.setContentView(R.layout.custom_dialog_with_field)
-        val title = dialog.findViewById(R.id.titleTV) as TextView
-        title.text = titleToPut
-        val sendButton = dialog.findViewById(R.id.sendButton) as Button
-        val emailET = dialog.findViewById<EditText>(R.id.emailET)
-        sendButton.setOnClickListener { action(emailET.text.toString()) }
-        dialog.show()
-    }
+//    fun showDialogWithField(
+//        activity: AppCompatActivity,
+//        titleToPut: String,
+//        action: (email: String) -> Unit
+//    ) {
+//        val dialog = Dialog(activity)
+//        dialog.setCancelable(true)
+//        dialog.setContentView(R.layout.custom_dialog_with_field)
+//        val title = dialog.findViewById(R.id.titleTV) as TextView
+//        val errorMessage = dialog.findViewById(R.id.errorMessageLabel) as TextView
+//        title.text = titleToPut
+//        val sendButton = dialog.findViewById(R.id.sendButton) as Button
+//        val emailET = dialog.findViewById<EditText>(R.id.emailET)
+//        sendButton.setOnClickListener {
+//            action(emailET.text.toString())
+//        }
+//        dialog.show()
+//    }
+
+
 }

@@ -19,6 +19,8 @@ import com.google.gson.Gson
 import com.ihebchiha.hiltapp.R
 import com.ihebchiha.hiltapp.networking.result.models.Quote
 import com.ihebchiha.hiltapp.ui.presentation.QuoteDetailsViewModel
+import com.ihebchiha.hiltapp.utils.constants.CONTENT
+import com.ihebchiha.hiltapp.utils.constants.SLIDE_DOWN_ANIMATION
 import com.ihebchiha.hiltapp.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quote_details.*
@@ -73,7 +75,6 @@ class QuoteDetailsFragment : Fragment() {
                 findNavController().navigate(R.id.goBackToQuotes)
             }
         }
-        CustomDialog.showPopUpMessageDialog(requireActivity() ,true, "Hello Mates",CustomDialog.SLIDE_DOWN_ANIMATION)
     }
 
     companion object {
